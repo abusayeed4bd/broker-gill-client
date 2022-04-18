@@ -1,5 +1,5 @@
-Navbar {
-    border-bottom: 1px solid #ddd;
+.nav-bar {
+    height: 80px;
 }
 
 nav a {

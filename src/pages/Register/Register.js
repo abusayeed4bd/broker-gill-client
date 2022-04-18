@@ -1,9 +1,17 @@
 import React from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import SocialLogin from '../sharedComponent/SocialLogin/SocialLogin';
 import './Register.css'
 
 const Register = () => {
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
     return (
         <div className='container'>
 
@@ -24,7 +32,7 @@ const Register = () => {
                     </div>
                     <button className='w-100 btn btn-danger mt-3'>Crate Account</button>
                 </form>
-                <p className='text-center mt-2'>Already have an account ? <Link className='text-decoration-none text-danger' to='/signup'>Login here</Link></p>
+                <p className='text-center mt-2'>Already have an account ? <Link className='text-decoration-none text-danger' to='/login'>Login here</Link></p>
                 <SocialLogin></SocialLogin>
             </div>
         </div>

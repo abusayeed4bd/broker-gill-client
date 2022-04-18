@@ -1,10 +1,13 @@
 import React from 'react';
+import Banner from '../Banner/Banner';
+import Services from '../Services/Services';
 import './Home.css';
 
 const Home = () => {
     return (
         <div className='page'>
-            this is home
+            <Banner></Banner>
+            <Services></Services>
         </div>
     );
 };
