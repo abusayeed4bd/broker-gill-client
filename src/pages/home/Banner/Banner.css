@@ -1,3 +1,17 @@
-.banner-img {
-    background-color: rgba(0, 0, 0, 0.233);
+@media screen and (max-width: 679px) {
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+        margin: 50px auto;
+    }
+
+    .banner-img {
+        width: 100%;
+        order: 1;
+    }
+
+    .banner-text {
+        width: 100%;
+        order: 2;
+    }
 }

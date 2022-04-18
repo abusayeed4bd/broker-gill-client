@@ -15,7 +15,7 @@ const Services = () => {
                 <h2 className='display-5 fw-bold text-danger'>My Services</h2>
                 <p className='text-muted fs-5'>We provide expert tax and advisory services to individuals and small businesses.</p>
             </div>
-            <div className=' card-container d-flex justify-content-between card-group'>
+            <div className=' card-container  row card-group'>
                 {
                     services.map(service => <Service
                         key={service.id}

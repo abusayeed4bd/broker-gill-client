@@ -1,4 +1,6 @@
-import React from 'react';
+
+import React, { useState } from 'react';
+
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -11,18 +13,24 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
-    if (error) {
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
+    const handleEmailBlur = event => {
+        setEmail(event.target.value);
+    }
+    const handelPasswordBlur = event => {
+        setPassword(event.target.value);
     }
 
     const handleRegisterSubmit = event => {
         event.preventDefault();
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        console.log(email, password);
+
         createUserWithEmailAndPassword(email, password);
+
     }
+
     return (
         <div className='container'>
 
@@ -35,13 +43,14 @@ const Register = () => {
                     </div>
                     <div>
                         <label className='d-block' htmlFor="email">Email</label>
-                        <input className='form-control' type="email" name="email" placeholder='Your Email' id="" />
+                        <input onBlur={handleEmailBlur} className='form-control' type="email" name="email" placeholder='Your Email' id="" />
                     </div>
                     <div>
                         <label className='d-block' htmlFor="password">Password</label>
-                        <input className='form-control' type="password" name="password" placeholder='Your Email' id="" />
+                        <input onBlur={handelPasswordBlur} className='form-control' type="password" name="password" placeholder='Your Email' id="" />
                     </div>
                     <button className='w-100 btn btn-danger mt-3'>Crate Account</button>
+
 
                 </form>
                 <p className='text-center mt-2'>Already have an account ? <Link className='text-decoration-none text-danger' to='/login'>Login here</Link></p>
