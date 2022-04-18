@@ -12,15 +12,26 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    if (error) {
+
+    }
+
+    const handleRegisterSubmit = event => {
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        console.log(email, password);
+        createUserWithEmailAndPassword(email, password);
+    }
     return (
         <div className='container'>
 
             <div className="form-container w-50 mx-auto bg-light m-4 p-4">
                 <h2 className='text-center'>Create Account</h2>
-                <form >
+                <form onSubmit={handleRegisterSubmit}>
                     <div>
                         <label className='d-block' htmlFor="email">Name</label>
-                        <input className='form-control' type="email" name="email" placeholder='Your Name' id="" />
+                        <input className='form-control' type="text" name="name" placeholder='Your Name' id="" />
                     </div>
                     <div>
                         <label className='d-block' htmlFor="email">Email</label>
@@ -31,6 +42,7 @@ const Register = () => {
                         <input className='form-control' type="password" name="password" placeholder='Your Email' id="" />
                     </div>
                     <button className='w-100 btn btn-danger mt-3'>Crate Account</button>
+
                 </form>
                 <p className='text-center mt-2'>Already have an account ? <Link className='text-decoration-none text-danger' to='/login'>Login here</Link></p>
                 <SocialLogin></SocialLogin>
